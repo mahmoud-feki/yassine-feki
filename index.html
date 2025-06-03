@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mon Parcours - Chef Cuisinier</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: linear-gradient(135deg, #fff5e1, #ffe8cc);
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    header img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      border: 4px solid #fff;
+    }
+
+    header h1 {
+      margin: 20px 0 10px;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .timeline {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .section {
+      margin-bottom: 80px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s ease-out;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      border-left: 5px solid #ffb347;
+      padding-left: 15px;
+    }
+
+    .section .section-desc {
+      margin-bottom: 20px;
+      font-style: italic;
+      color: #666;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .photo-item {
+      background: #fff8f0;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+
+    .photo-item img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      height: 200px;
+      border: 2px solid #f0d9c2;
+    }
+
+    .photo-item p {
+      font-size: 0.95rem;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* Lightbox modal */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      display: none;
+    }
+
+    .lightbox-content {
+      position: relative;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 90vw;
+      max-height: 90vh;
+      text-align: center;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 60vh;
+      border-radius: 10px;
+    }
+
+    .lightbox-content p {
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+
+    .lightbox .nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+      padding: 10px;
+    }
+
+    .lightbox .prev { left: 20px; }
+    .lightbox .next { right: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="sources/profile.jpg" alt="Photo du Chef" />
+  <h1>Chef Julien Moreau</h1>
+  <p>Passionné par la gastronomie française et les expériences culinaires créatives, je crée des plats alliant tradition et innovation. Voici mon parcours et mes réalisations.</p>
+</header>
+
+<div class="timeline">
+  <div class="section" id="section1">
+    <h2>Mes Débuts - 2015</h2>
+    <p class="section-desc">Une période d'exploration et d'expérimentation où j'ai posé les bases de ma cuisine personnelle.</p>
+    <div class="photo-grid">
+      <div class="photo-item" data-index="0">
+        <img src="sources/IMG-20250603-WA0059.jpg" alt="Tartare de saumon" />
+        <p>Tartare de saumon revisité</p>
+      </div>
+      <div class="photo-item" data-index="1">
+        <img src="sources/IMG-20250603-WA0060.jpg" alt="Entrée créative" />
+        <p>Entrée créative autour des légumes</p>
+      </div>
+      <div class="photo-item" data-index="2">
+        <img src="sources/IMG-20250603-WA0061.jpg" alt="Création saisonnière" />
+        <p>Création saisonnière au Jardin des Saveurs</p>
+      </div>
+      <div class="photo-item" data-index="3">
+        <img src="sources/IMG-20250603-WA0062.jpg" alt="Menu de printemps" />
+        <p>Menu de printemps</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="section2">
+    <h2>Expériences Médias - 2020</h2>
+    <p class="section-desc">Une année marquée par la médiatisation de mon travail et des challenges intenses.</p>
+    <div class="photo-grid">
+      <div class="photo-item" data-index="4">
+        <img src="sources/IMG-20250603-WA0063.jpg" alt="Top Chef" />
+        <p>Épreuve canard à l’orange - Top Chef</p>
+      </div>
+      <div class="photo-item" data-index="5">
+        <img src="sources/IMG-20250603-WA0064.jpg" alt="Dégustation" />
+        <p>Présentation de plat signature</p>
+      </div>
+      <div class="photo-item" data-index="6">
+        <img src="sources/IMG-20250603-WA0065.jpg" alt="Cuisine moderne" />
+        <p>Fusion entre modernité et tradition</p>
+      </div>
+      <div class="photo-item" data-index="7">
+        <img src="sources/IMG-20250603-WA0066.jpg" alt="Jury Top Chef" />
+        <p>Avec les membres du jury</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="section3">
+    <h2>Mon Restaurant - 2023</h2>
+    <p class="section-desc">L'ouverture de mon propre établissement, concrétisation de plusieurs années de passion et de travail.</p>
+    <div class="photo-grid">
+      <div class="photo-item" data-index="8">
+        <img src="sources/IMG-20250603-WA0067.jpg" alt="Devanture" />
+        <p>Devanture de "La Table de Julien"</p>
+      </div>
+      <div class="photo-item" data-index="9">
+        <img src="sources/IMG-20250603-WA0068.jpg" alt="Salle" />
+        <p>Ambiance de la salle</p>
+      </div>
+      <div class="photo-item" data-index="10">
+        <img src="sources/IMG-20250603-WA0069.jpg" alt="Plat vedette" />
+        <p>Plat vedette : homard et agrumes</p>
+      </div>
+      <div class="photo-item" data-index="11">
+        <img src="sources/IMG-20250603-WA0070.jpg" alt="Dessert" />
+        <p>Dessert aux fruits rouges</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <span class="nav prev" onclick="navigate(-1)">&#10094;</span>
+  <div class="lightbox-content">
+    <img id="lightbox-img" src="" alt="" />
+    <p id="lightbox-caption"></p>
+  </div>
+  <span class="nav next" onclick="navigate(1)">&#10095;</span>
+</div>
+
+<script>
+  // Animation au scroll
+  const sections = document.querySelectorAll('.section');
+  const options = { threshold: 0.3 };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, options);
+
+  sections.forEach(section => observer.observe(section));
+
+  // Lightbox functionality
+  const photos = document.querySelectorAll('.photo-item');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    const item = photos[index];
+    const img = item.querySelector('img');
+    const caption = item.querySelector('p');
+    lightboxImg.src = img.src;
+    lightboxCaption.textContent = caption.textContent;
+    currentIndex = index;
+    lightbox.style.display = 'flex';
+  }
+
+  function navigate(direction) {
+    currentIndex = (currentIndex + direction + photos.length) % photos.length;
+    openLightbox(currentIndex);
+  }
+
+  photos.forEach((item, index) => {
+    item.addEventListener('click', () => openLightbox(index));
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox || e.target.classList.contains('nav')) return;
+    lightbox.style.display = 'none';
+  });
+</script>
+
+</body>
+<footer style="text-align: center; padding: 40px 20px; background: #fff5e1; font-size: 0.95rem;">
+  <p>Retrouvez toutes mes créations sur Instagram :</p>
+  <a href="https://www.instagram.com/moncomptechef" target="_blank" style="
+    display: inline-block;
+    margin-top: 10px;
+    background: #f77f00;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background 0.3s;
+  ">📸 Suivre @moncomptechef</a>
+</footer>
+</html>
